@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <button id="continue" type="button" name="button">continue</button>
+        <script type="text/javascript">
+            document.getElementById('continue').addEventListener('click', function(e) {
+                console.log('clicked');
+                window.opener.postMessage('hi', window.opener.location);
+                //window.close();
+            });
+        </script>
+    </body>
+</html>

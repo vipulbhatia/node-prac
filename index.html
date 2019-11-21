@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <button id="login" type="button" name="button">login</button>
+        <script type="text/javascript">
+            document.getElementById('login').addEventListener('click', function(e) {
+                new Promise((resolve, reject) => {
+                    console.log('clicked', e);
+                    var win = window.open('/login.html', '_blank', 'width=300,height=300');
+                    window.addEventListener('message', function(msg) {
+                        console.log('got message', msg);
+                        resolve(msg)
+                        win.close();
+                    });
+                    //setTimeout(() => resolve(1), 1000);
+                }).then((resolve) => {
+                    console.log('promised', resolve.data);
+                }).catch((reject) => {
+                    console.log(reject);
+                })
+            });
+        </script>
+    </body>
+</html>
